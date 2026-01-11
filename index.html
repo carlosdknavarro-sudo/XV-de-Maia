@@ -8,22 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-family: 'Dancing Script', cursive;
-            text-align: center;
-            background-color: #e3f2fd; 
-            /* Imagen de fondo */
-           /* Reemplaza tu línea por esta */
-            background-image: url('https://raw.githubusercontent.com/carlosdknavarro-sudo/XV-de-Maia/main/fondo.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Efecto elegante en PC */
-            overflow-x: hidden;
-            font-size: 22px;
-        }
+       
 
         /* --- SOLUCIÓN PARA CELULARES --- */
         @media (max-width: 768px) {
@@ -38,7 +23,30 @@
             .card h3 { font-size: 30px; }
             .countdown { font-size: 30px !important; }
         }
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    background-color: #e3f2fd; 
+    /* ESTA ES LA URL CORRECTA PARA GITHUB PAGES */
+    background-image: url('https://raw.githubusercontent.com/carlosdknavarro-sudo/XV-de-Maia/main/fondo.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    font-size: 22px;
+}
 
+/* Ajuste para que en celulares la imagen se vea siempre */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll !important;
+        background-image: url('https://raw.githubusercontent.com/carlosdknavarro-sudo/XV-de-Maia/main/fondo.png');
+    }
+}
         .decoracion {
             position: fixed;
             top: 0;
