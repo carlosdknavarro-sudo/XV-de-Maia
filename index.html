@@ -19,18 +19,22 @@
 
     <style>
     
-    body {
+   body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     font-family: 'Dancing Script', cursive;
     text-align: center;
-    /* Usamos una versión simplificada del link para asegurar carga directa */
-    background-image: url('https://i.postimg.cc/x19pF0dv/Gemini-Generated-Image-5muuk85muuk85muu.png'); 
+    /* Fondo de respaldo por si falla la imagen */
+    background-color: #e3f2fd; 
+    
+    /* IMAGEN DE FONDO CORREGIDA */
+    background-image: url('https://images2.imgbox.com/39/53/7uJUnPia_o.png'); 
+    
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
+    background-attachment: fixed; /* Esto hace que el fondo se quede quieto al bajar */
     overflow-x: hidden;
     font-size: 22px;
 }
