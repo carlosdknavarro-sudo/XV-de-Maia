@@ -8,13 +8,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
-       
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            background-color: #e3f2fd; 
+            
+            /* CONFIGURACIÓN DE FONDO */
+            background-image: url('fondo.png'); 
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Elegante en PC */
+            
+            overflow-x: hidden;
+            font-size: 22px;
+        }
 
-        /* --- SOLUCIÓN PARA CELULARES --- */
+        /* --- AJUSTE PARA CELULARES (IMPORTANTE) --- */
         @media (max-width: 768px) {
             body {
-                /* Desactivamos el 'fixed' en móviles para evitar que el fondo desaparezca */
+                /* Cambiamos fixed por scroll porque el fixed falla en móviles */
                 background-attachment: scroll !important;
+                background-image: url('fondo.png') !important;
                 background-size: cover;
                 background-position: center center;
             }
@@ -23,30 +41,7 @@
             .card h3 { font-size: 30px; }
             .countdown { font-size: 30px !important; }
         }
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Dancing Script', cursive;
-    text-align: center;
-    background-color: #e3f2fd; 
-    /* ESTA ES LA URL CORRECTA PARA GITHUB PAGES */
-    background-image: url('https://raw.githubusercontent.com/carlosdknavarro-sudo/XV-de-Maia/main/fondo.png'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow-x: hidden;
-    font-size: 22px;
-}
 
-/* Ajuste para que en celulares la imagen se vea siempre */
-@media (max-width: 768px) {
-    body {
-        background-attachment: scroll !important;
-        background-image: url('https://raw.githubusercontent.com/carlosdknavarro-sudo/XV-de-Maia/main/fondo.png');
-    }
-}
         .decoracion {
             position: fixed;
             top: 0;
@@ -258,7 +253,7 @@ body {
                     ⏰ 22:00 hs<br>
                     📍 Salón Congreso 1735
                 </p>
-                <a class="button" href="https://www.google.com/maps/search/?api=1&query=Congreso+1735" target="_blank">Ver ubicación</a>
+                <a class="button" href="https://www.google.com/maps/search/?api=1&query=Salón+Congreso+1735" target="_blank">Ver ubicación</a>
             </div>
 
             <div class="card" style="text-align: center;">
@@ -354,4 +349,4 @@ body {
         document.querySelectorAll('.fade').forEach(el => observer.observe(el));
     </script>
 </body>
-</html>
+</html>https://carlosdknavarro-sudo.github.io/XV-de-Maia/
