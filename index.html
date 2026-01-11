@@ -8,36 +8,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
-        <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis 15 Años | Maia</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
-    <style>
     
-   body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Dancing Script', cursive;
-    text-align: center;
-    /* Fondo de respaldo por si falla la imagen */
-    background-color: #e3f2fd; 
-    
-    /* IMAGEN DE FONDO CORREGIDA */
-    background-image: url('https://images2.imgbox.com/71/37/FwT0G96E_o.png');
-    
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Esto hace que el fondo se quede quieto al bajar */
-    overflow-x: hidden;
-    font-size: 22px;
-}
+body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            
+            /* Usamos este link que es más compatible con móviles */
+            background-image: url('https://images2.imgbox.com/71/37/FwT0G96E_o.png'); 
+            
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            font-size: 22px;
+            
+            /* Esto asegura que si la imagen carga, el color no interfiera */
+            background-color: transparent; 
+        }
 
         /* --- SOLUCIÓN PARA CELULARES --- */
         @media (max-width: 768px) {
