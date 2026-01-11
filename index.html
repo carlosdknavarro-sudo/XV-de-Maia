@@ -9,21 +9,18 @@
 
     <style>
         /* --- RESET Y BASE --- */
-        * { box-sizing: border-box; }
-
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'Dancing Script', cursive;
             text-align: center;
-            background-color: #e3f2fd; /* Color de respaldo */
+            background-color: #e3f2fd;
             overflow-x: hidden;
-            font-size: 18px;
+            font-size: 20px;
         }
 
-        /* --- SOLUCIÓN DEFINITIVA PARA EL FONDO --- */
-        /* Creamos una capa fija independiente del contenido */
+        /* --- FIX PARA FONDO EN CELULARES --- */
         body::before {
             content: "";
             position: fixed;
@@ -31,111 +28,128 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background-image: url('https://i.postimg.cc/x19pF0dv/Gemini-Generated-Image-5muuk85muuk85muu.png'); 
+            /* Imagen de fondo */
+            background-image: url('https://i.postimg.cc/x19pF0dv/Gemini-Generated-Image-5muuk85muuk85muu.png');
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
-            /* Eliminamos background-attachment: fixed porque rompe móviles */
+            z-index: -10;
         }
 
-        /* --- DECORACIONES LATERALES --- */
+        /* --- DECORACIONES (Flores/Mariposas) --- */
         .decoracion {
             position: fixed;
             top: 0;
-            width: 80px; /* Tamaño reducido para móviles */
+            width: 150px;
             height: 100%;
             z-index: -1; 
             background-repeat: no-repeat;
             background-size: contain;
             pointer-events: none;
-            opacity: 0.5;
+            opacity: 0.8;
         }
-
-        @media (min-width: 768px) {
-            .decoracion { width: 150px; opacity: 0.8; }
-        }
-
         .izq { left: 0; background-position: left center; }
         .der { right: 0; background-position: right center; }
+
+        /* --- SOLUCIÓN ESPECÍFICA PARA CELULARES --- */
+        @media (max-width: 768px) {
+            body::before {
+                /* En móvil el fixed a veces falla, scroll es más seguro */
+                position: absolute;
+                background-attachment: scroll;
+            }
+
+            .decoracion {
+                width: 60px; /* Flores más pequeñas para que no tapen el texto */
+                opacity: 0.5;
+            }
+
+            .section {
+                margin: 15px !important;
+                padding: 20px !important;
+                max-width: 90% !important;
+            }
+
+            .hero h1 { font-size: 60px; }
+            .hero h2 { font-size: 30px; }
+            .card h3 { font-size: 28px; }
+            .countdown { font-size: 28px !important; }
+            
+            .grid {
+                grid-template-columns: 1fr !important; /* Una sola columna para que no se vea apretado */
+            }
+        }
 
         /* --- CONTENIDO --- */
         .hero { padding: 50px 20px; }
         .hero h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(65px, 18vw, 100px);
+            font-size: 90px;
             color: #2c4f8a;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
         }
 
         .hero h2 {
             font-weight: 700;
-            color: #444;
-            margin-top: 5px;
-            font-size: clamp(28px, 8vw, 45px); 
+            color: #555;
+            font-size: 40px; 
+            margin-top: 10px;
         }
 
         .section {
             background: rgba(255, 255, 255, 0.88);
             margin: 20px auto;
-            padding: 25px 15px;
-            width: 92%;
-            max-width: 700px;
-            border-radius: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            padding: 30px;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(8px);
         }
 
         .countdown {
-            font-size: clamp(24px, 7vw, 38px);
+            font-size: 40px;
             color: #2c4f8a;
             font-weight: bold;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-top: 20px;
-        }
-
-        @media (min-width: 600px) {
-            .grid { grid-template-columns: 1fr 1fr; }
         }
 
         .card {
             background: white;
             border-radius: 15px;
-            padding: 20px;
-            border: 1.5px solid #2c4f8a;
+            padding: 25px;
+            border: 2px solid #2c4f8a;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
 
         .card h3 { 
             color: #2c4f8a; 
-            margin-top: 0; 
-            font-size: 26px;
-            border-bottom: 1px solid #f0f0f0;
-            width: 100%;
-            padding-bottom: 8px;
+            font-size: 32px;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
 
-        /* --- VESTIMENTA --- */
         .no-color-container {
             display: flex;
+            justify-content: center;
             gap: 20px;
-            margin: 10px 0;
+            margin-top: 15px;
         }
 
         .prohibido-item {
             position: relative;
-            font-size: 40px;
-            width: 65px;
-            height: 65px;
+            font-size: 45px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -144,52 +158,61 @@
         .prohibido-item::after {
             content: "";
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             border: 4px solid #d32f2f;
             border-radius: 50%;
             background: linear-gradient(45deg, transparent 46%, #d32f2f 46%, #d32f2f 54%, transparent 54%);
         }
 
-        /* --- BOTONES --- */
         .button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 25px;
-            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 25px;
             background: #2c4f8a;
             color: white !important;
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
-            transition: 0.3s;
             border: none;
-            width: 100%;
+            cursor: pointer;
         }
 
         .btn-whatsapp { background: #25d366; }
 
         .cbu-box {
-            background: #f4f7fa;
+            background: #f9f9f9;
             padding: 10px;
             border-radius: 10px;
             border: 1px dashed #2c4f8a;
-            margin: 10px 0;
             font-family: sans-serif;
-            font-size: 15px;
-            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
         }
 
         .footer {
             padding: 40px 20px;
             font-family: 'Great Vibes', cursive;
-            font-size: 32px;
+            font-size: 38px;
             color: #2c4f8a;
-            line-height: 1.2;
         }
 
-        /* --- ANIMACIONES --- */
-        .fade { opacity: 0; transform: translateY(25px); transition: all 0.8s ease-out; }
+        .crea-momentos-link {
+            display: inline-block;
+            font-family: sans-serif; 
+            font-size: 13px; 
+            color: #2c4f8a; 
+            text-decoration: none; 
+            background: rgba(255,255,255,0.7); 
+            padding: 8px 12px; 
+            border-radius: 10px; 
+            margin-bottom: 30px;
+        }
+
+        /* --- ANIMACIÓN --- */
+        .fade { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .fade.show { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -204,52 +227,47 @@
     </div>
 
     <div class="section fade">
-        <div class="countdown" id="countdown">Cargando...</div>
+        <div class="countdown" id="countdown">Calculando...</div>
     </div>
 
     <div class="section fade">
         <div class="grid">
-            
             <div class="card">
                 <h3>🎉 Fiesta</h3>
-                <p>7 de Febrero de 2026<br>22:00 hs<br>Salón Congreso 1735</p>
-                <a class="button" href="https://maps.google.com/?q=Salón+Congreso+1735" target="_blank">Ver ubicación</a>
+                <p>📅 7 de Feb 2026 | ⏰ 22:00 hs<br>📍 Salón Congreso 1735</p>
+                <a class="button" href="https://maps.google.com" target="_blank">Ver ubicación</a>
             </div>
 
             <div class="card">
                 <h3>👗 Vestimenta</h3>
-                <p>Elegante Sport</p>
+                <p><strong>Elegante Sport</strong><br>Evita el Celeste y Azul</p>
                 <div class="no-color-container">
                     <div class="prohibido-item" style="color: #87CEEB;">👗</div>
                     <div class="prohibido-item" style="color: #0000FF;">👔</div>
                 </div>
-                <p style="font-size: 14px; color: #666;">Evitar Celeste y Azul</p>
             </div>
 
             <div class="card">
                 <h3>🎁 Regalo</h3>
-                <p>Tu presencia es lo más importante, pero si gustas:</p>
+                <p>Tu presencia es mi mejor regalo, pero si deseas ayudarme con mis sueños:</p>
                 <div class="cbu-box" id="cbu-texto">Maiajazmin.777</div>
                 <button class="button" onclick="copiarCBU()">Copiar Alias</button>
             </div>
 
             <div class="card">
-                <h3>📸 Álbum</h3>
-                <p>¡Comparte tus fotos!</p>
-                <a class="button" href="https://photos.app.goo.gl/KHFKGasiq1Sk8PYG9" target="_blank">Subir fotos</a>
+                <h3>✅ Asistencia</h3>
+                <p>Confirma hasta el 20 de Enero</p>
+                <a class="button btn-whatsapp" href="https://wa.me/5493814035403?text=Hola%20Maia!%20Confirmo%20mi%20asistencia." target="_blank">WhatsApp</a>
             </div>
-
-        </div>
-
-        <div class="card" style="margin-top: 15px; width: 100%;">
-            <h3>✅ Asistencia</h3>
-            <p>Por favor confirma antes del 20 de Enero</p>
-            <a class="button btn-whatsapp" href="https://wa.me/5493814035403?text=Hola%20Maia!%20Confirmo%20mi%20asistencia%20a%20tu%20fiesta." target="_blank">Confirmar WhatsApp</a>
         </div>
     </div>
 
-    <div class="footer fade">
-        ¡Te espero para celebrar juntos! ✨
+    <div class="footer fade">Te espero ✨</div>
+
+    <div class="fade">
+        <a href="https://carlosdknavarro-sudo.github.io/Crea-Momentos/" target="_blank" class="crea-momentos-link">
+            Diseñado por Crea Momentos
+        </a>
     </div>
 
     <script>
@@ -263,15 +281,15 @@
         const fechaEvento = new Date("February 7, 2026 22:00:00").getTime();
         function actualizarReloj() {
             const ahora = new Date().getTime();
-            const dif = fechaEvento - ahora;
-            if (dif < 0) {
+            const diferencia = fechaEvento - ahora;
+            if (diferencia < 0) {
                 document.getElementById("countdown").innerHTML = "¡ES HOY! 🎉";
                 return;
             }
-            const d = Math.floor(dif / (1000 * 60 * 60 * 24));
-            const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((dif % (1000 * 60)) / 1000);
+            const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diferencia % (1000 * 60)) / 1000);
             document.getElementById("countdown").innerHTML = `${d}d : ${h}h : ${m}m : ${s}s`;
         }
         setInterval(actualizarReloj, 1000);
