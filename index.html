@@ -15,23 +15,23 @@
             font-family: 'Dancing Script', cursive;
             text-align: center;
             background-color: #e3f2fd; 
-            /* Imagen de fondo - Asegúrate de que tu archivo se llame fondo.png en GitHub */
+            /* Imagen de fondo */
             background-image: url('fondo.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: scroll;
+            background-attachment: fixed; /* Efecto elegante en PC */
             overflow-x: hidden;
             font-size: 22px;
         }
 
-        /* --- ARREGLO PARA CELULARES --- */
+        /* --- SOLUCIÓN PARA CELULARES --- */
         @media (max-width: 768px) {
             body {
+                /* Desactivamos el 'fixed' en móviles para evitar que el fondo desaparezca */
                 background-attachment: scroll !important;
-                background-image: url('fondo.png') !important;
-                background-size: cover !important;
-                background-position: center center !important;
+                background-size: cover;
+                background-position: center center;
             }
             .hero h1 { font-size: 70px; }
             .hero h2 { font-size: 35px; }
@@ -105,6 +105,8 @@
             justify-content: center;
         }
 
+        .card:hover { transform: translateY(-5px); }
+        
         .card h3 { 
             color: #2c4f8a; 
             margin-top: 0; 
@@ -156,6 +158,8 @@
         .icon-celeste { color: #87CEEB; }
         .icon-azul { color: #0000FF; }
 
+        .photo-card { background: #f0f7ff; }
+
         .button {
             display: inline-flex;
             align-items: center;
@@ -177,6 +181,7 @@
 
         .button:hover { background: #1a3666; }
         .btn-whatsapp { background: #25d366; }
+        .btn-whatsapp:hover { background: #128c7e; }
 
         .cbu-box {
             background: #f9f9f9;
@@ -201,7 +206,7 @@
         .fade.show { opacity: 1; transform: translateY(0); }
 
         .crea-momentos-wrapper {
-            padding: 30px 0;
+            padding-bottom: 30px;
             display: block;
             width: 100%;
         }
@@ -218,10 +223,6 @@
             backdrop-filter: blur(4px);
             border: 1px solid rgba(44, 79, 138, 0.2);
             transition: all 0.3s ease;
-        }
-        .crea-momentos-link:hover {
-            background: white;
-            transform: scale(1.05);
         }
     </style>
 </head>
@@ -249,7 +250,7 @@
                     ⏰ 22:00 hs<br>
                     📍 Salón Congreso 1735
                 </p>
-                <a class="button" href="https://www.google.com/maps/search/Congreso+1735" target="_blank">Ver ubicación</a>
+                <a class="button" href="https://www.google.com/maps/search/?api=1&query=Congreso+1735" target="_blank">Ver ubicación</a>
             </div>
 
             <div class="card" style="text-align: center;">
@@ -272,16 +273,26 @@
                 <button class="button" onclick="copiarCBU()">Copiar Alias</button>
             </div>
 
+            <div class="card photo-card">
+                <h3>📸 Álbum</h3>
+                <p>¡Ayúdame a guardar recuerdos! Sube tus fotos aquí:</p>
+                <div class="qr-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://photos.app.goo.gl/KHFKGasiq1Sk8PYG9" width="120" height="120" alt="QR Fotos">
+                </div>
+                <a class="button" href="https://photos.app.goo.gl/KHFKGasiq1Sk8PYG9" target="_blank">Subir fotos</a>
+            </div>
+
             <div class="card">
-                <h3>✅ Confirmar</h3>
-                <p>Confirma hasta el día 20 de Enero</p>
-                <a class="button btn-whatsapp" href="https://wa.me/5493814035403" target="_blank">
+                <h3>✅ Confirma tu Asistencia</h3>
+                <p>¡Ojalá puedas acompañarme en este gran día!<br>Confirma hasta el día 20 de Enero</p>
+                <a class="button btn-whatsapp" href="https://wa.me/5493814035403?text=Hola%20Maia!%20Confirmo%20mi%20asistencia%20a%20tu%20fiesta." target="_blank">
                     WhatsApp
                 </a>
             </div>
 
             <div class="card card-frase">
-                "Dejo atrás la niñez y abro mis alas hacia nuevos sueños..."
+                "Dejo atrás la niñez y abro mis alas hacia nuevos sueños... <br><br>
+                Gracias por acompañarme en este viaje donde cada momento se convierte en un recuerdo eterno"
             </div>
 
         </div>
@@ -303,7 +314,7 @@
         function copiarCBU() {
             const cbu = document.getElementById("cbu-texto").innerText;
             navigator.clipboard.writeText(cbu).then(() => {
-                alert("Alias copiado: " + cbu);
+                alert("Alias copiado al portapapeles: " + cbu);
             });
         }
 
